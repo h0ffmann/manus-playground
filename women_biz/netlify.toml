@@ -1,0 +1,29 @@
+# Configuração de deploy para Netlify
+
+# Configurações globais
+[build]
+  publish = "."
+  command = "echo 'No build command needed for static site'"
+
+# Redirecionamentos e cabeçalhos
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Cabeçalhos para melhorar segurança e performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://www.emailjs.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.emailjs.com;"
+    
+# Configurações de plugins
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+  
+  [plugins.inputs]
+    output_path = "lighthouse-report.html"

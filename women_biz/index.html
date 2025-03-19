@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template de Consultoria para Mulheres Empreendedoras</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="email-service.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Consultoria para Mulheres Empreendedoras</h1>
+            <p>Preencha o formulário abaixo para receber um plano de ação personalizado e um board no Trello com todas as tarefas para implementação do seu projeto.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+                <div class="progress-step active" data-step="1">1</div>
+                <div class="progress-step" data-step="2">2</div>
+                <div class="progress-step" data-step="3">3</div>
+                <div class="progress-step" data-step="4">4</div>
+                <div class="progress-step" data-step="5">5</div>
+                <div class="progress-step" data-step="6">6</div>
+            </div>
+        </div>
+
+        <form id="consultoriaForm">
+            <!-- Seção 1: Informações do Negócio -->
+            <section class="form-section active" id="section1">
+                <h2>Informações do Negócio</h2>
+                
+                <div class="form-group">
+                    <label>Tipo de Negócio</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="radio" id="tipoAirbnb" name="tipoNegocio" value="airbnb">
+                            <label for="tipoAirbnb">AirBnb/Hospedagem</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="tipoEventos" name="tipoNegocio" value="eventos">
+                            <label for="tipoEventos">Host de Eventos</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="tipoCoworking" name="tipoNegocio" value="coworking">
+                            <label for="tipoCoworking">Coworking</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="tipoEcommerce" name="tipoNegocio" value="ecommerce">
+                            <label for="tipoEcommerce">E-commerce</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="tipoConsultoria" name="tipoNegocio" value="consultoria">
+                            <label for="tipoConsultoria">Serviços de Consultoria</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="tipoOutro" name="tipoNegocio" value="outro">
+                            <label for="tipoOutro">Outro</label>
+                            <input type="text" id="tipoOutroTexto" class="hidden-input" placeholder="Especifique">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="descricaoNegocio">Descrição do Negócio</label>
+                    <textarea id="descricaoNegocio" placeholder="Descreva seu negócio em detalhes, incluindo proposta de valor, público-alvo, diferenciais competitivos..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="estagioNegocio">Estágio Atual do Negócio</label>
+                    <select id="estagioNegocio">
+                        <option value="">Selecione uma opção</option>
+                        <option value="ideia">Ideia</option>
+                        <option value="planejamento">Planejamento</option>
+                        <option value="operacao_inicial">Operação Inicial</option>
+                        <option value="expansao">Em Expansão</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="localizacao">Localização Física (se aplicável)</label>
+                    <input type="text" id="localizacao" placeholder="Cidade/Bairro">
+                </div>
+
+                <div class="form-group">
+                    <label for="alcance">Alcance Geográfico Pretendido</label>
+                    <select id="alcance">
+                        <option value="">Selecione uma opção</option>
+                        <option value="local">Local</option>
+                        <option value="regional">Regional</option>
+                        <option value="nacional">Nacional</option>
+                        <option value="internacional">Internacional</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Modelo de Operação</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="modeloPresencial" name="modeloOperacao" value="presencial">
+                            <label for="modeloPresencial">Presencial</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="modeloOnline" name="modeloOperacao" value="online">
+                            <label for="modeloOnline">Online</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="modeloHibrido" name="modeloOperacao" value="hibrido">
+                            <label for="modeloHibrido">Híbrido</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="objetivosCurto">Objetivos de Curto Prazo (3 meses)</label>
+                    <textarea id="objetivosCurto" placeholder="Liste seus principais objetivos para os próximos 3 meses"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="objetivosMedio">Objetivos de Médio Prazo (1 ano)</label>
+                    <textarea id="objetivosMedio" placeholder="Liste seus principais objetivos para o próximo ano"></textarea>
+                </div>
+
+                <div class="form-navigation">
+                    <button type="button" class="next-btn">Próximo <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </section>
+
+            <!-- Seção 2: Questionário Específico por Tipo de Negócio -->
+            <section class="form-section" id="section2">
+                <h2>Questionário Específico</h2>
+                
+                <!-- Questionário para AirBnb/Hospedagem -->
+                <div class="tipo-negocio-section" id="airbnbSection">
+                    <h3>Questionário Específico - AirBnb/Hospedagem</h3>
+                    
+                    <div class="form-group">
+                        <label for="numPropriedades">Número de propriedades disponíveis</label>
+                        <input type="number" id="numPropriedades" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Tipos de acomodações</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tipoApartamento" name="tipoAcomodacao" value="apartamento">
+                                <label for="tipoApartamento">Apartamento</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tipoCasa" name="tipoAcomodacao" value="casa">
+                                <label for="tipoCasa">Casa</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tipoChalé" name="tipoAcomodacao" value="chale">
+                                <label for="tipoChalé">Chalé</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tipoOutroAcomodacao" name="tipoAcomodacao" value="outro">
+                                <label for="tipoOutroAcomodacao">Outro</label>
+                                <input type="text" id="tipoOutroAcomodacaoTexto" class="hidden-input" placeholder="Especifique">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="capacidadeHospedes">Capacidade total de hóspedes</label>
+                        <input type="number" id="capacidadeHospedes" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="localizacaoPropriedades">Localização das propriedades</label>
+                        <input type="text" id="localizacaoPropriedades" placeholder="Bairros/Cidades">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Modelo de Operação</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="modeloPropria" name="modeloPropriedade" value="propria">
+                                <label for="modeloPropria">Propriedade própria</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="modeloTerceiros" name="modeloPropriedade" value="terceiros">
+                                <label for="modeloTerceiros">Gestão de propriedades de terceiros</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="modeloHibridoProp" name="modeloPropriedade" value="hibrido">
+                                <label for="modeloHibridoProp">Modelo híbrido</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Serviços Oferecidos</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoLimpeza" name="servicoOferecido" value="limpeza">
+                                <label for="servicoLimpeza">Limpeza</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoCafe" name="servicoOferecido" value="cafe">
+                                <label for="servicoCafe">Café da manhã</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoTransfer" name="servicoOferecido" value="transfer">
+                                <label for="servicoTransfer">Transfer</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoConcierge" name="servicoOferecido" value="concierge">
+                                <label for="servicoConcierge">Concierge</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoExperiencias" name="servicoOferecido" value="experiencias">
+                                <label for="servicoExperiencias">Experiências locais</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoOutro" name="servicoOferecido" value="outro">
+                                <label for="servicoOutro">Outros</label>
+                                <input type="text" id="servicoOutroTexto" class="hidden-input" placeholder="Especifique">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Questionário para Host de Eventos -->
+                <div class="tipo-negocio-section" id="eventosSection">
+                    <h3>Questionário Específico - Host de Eventos</h3>
+                    
+                    <div class="form-group">
+                        <label>Tipos de Eventos</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="eventoCorporativo" name="tipoEvento" value="corporativo">
+                                <label for="eventoCorporativo">Corporativos</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="eventoSocial" name="tipoEvento" value="social">
+                                <label for="eventoSocial">Sociais (casamentos, aniversários)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="eventoCultural" name="tipoEvento" value="cultural">
+                                <label for="eventoCultural">Culturais</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="eventoEducacional" name="tipoEvento" value="educacional">
+                                <label for="eventoEducacional">Educacionais</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="eventoEsportivo" name="tipoEvento" value="esportivo">
+                                <label for="eventoEsportivo">Esportivos</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="eventoOutro" name="tipoEvento" value="outro">
+                                <label for="eventoOutro">Outros</label>
+                                <input type="text" id="eventoOutroTexto" class="hidden-input" placeholder="Especifique">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="capacidadeMaxima">Capacidade máxima</label>
+                        <input type="number" id="capacidadeMaxima" min="0" placeholder="Número de pessoas">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="areaTotal">Área total (m²)</label>
+                        <input type="number" id="areaTotal" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ambientesDisponiveis">Ambientes disponíveis</label>
+                        <textarea id="ambientesDisponiveis" placeholder="Liste os ambientes disponíveis"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="estacionamento">Estacionamento (número de vagas)</label>
+                        <input type="number" id="estacionamento" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Serviços Inclusos</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoDecoracao" name="servicoIncluso" value="decoracao">
+                                <label for="servicoDecoracao">Decoração</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoBuffet" name="servicoIncluso" value="buffet">
+                                <label for="servicoBuffet">Buffet</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoSom" name="servicoIncluso" value="som">
+                                <label for="servicoSom">Sonorização</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoIluminacao" name="servicoIncluso" value="iluminacao">
+                                <label for="servicoIluminacao">Iluminação</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoFoto" name="servicoIncluso" value="foto">
+                                <label for="servicoFoto">Fotografia/Filmagem</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoOutroEvento" name="servicoIncluso" value="outro">
+                                <label for="servicoOutroEvento">Outros</label>
+                                <input type="text" id="servicoOutroEventoTexto" class="hidden-input" placeholder="Especifique">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Questionário para Coworking -->
+                <div class="tipo-negocio-section" id="coworkingSection">
+                    <h3>Questionário Específico - Coworking</h3>
+                    
+                    <div class="form-group">
+                        <label for="areaCoworking">Área total (m²)</label>
+                        <input type="number" id="areaCoworking" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="estacoesTrabalho">Número de estações de trabalho</label>
+                        <input type="number" id="estacoesTrabalho" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="salasPrivativas">Número de salas privativas</label>
+                        <input type="number" id="salasPrivativas" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="salasReuniao">Número de salas de reunião</label>
+                        <input type="number" id="salasReuniao" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="capacidadeCoworking">Capacidade total</label>
+                        <input type="number" id="capacidadeCoworking" min="0" placeholder="Número de pessoas">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Modelo de Negócio</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="modeloAssinatura" name="modeloCoworking" value="assinatura">
+                                <label for="modeloAssinatura">Assinatura mensal</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="modeloDayUse" name="modeloCoworking" value="dayuse">
+                                <label for="modeloDayUse">Day use</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="modeloPacoteHoras" name="modeloCoworking" value="pacotehoras">
+                                <label for="modeloPacoteHoras">Pacote de horas</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="modeloSalasPrivativas" name="modeloCoworking" value="salasprivativas">
+                                <label for="modeloSalasPrivativas">Aluguel de salas privativas</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="modeloOutroCoworking" name="modeloCoworking" value="outro">
+                                <label for="modeloOutroCoworking">Outro</label>
+                                <input type="text" id="modeloOutroCoworkingTexto" class="hidden-input" placeholder="Especifique">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Serviços Oferecidos</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoInternet" name="servicoCoworking" value="internet">
+                                <label for="servicoInternet">Internet de alta velocidade</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoCafe" name="servicoCoworking" value="cafe">
+                                <label for="servicoCafe">Café/Cozinha compartilhada</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoImpressora" name="servicoCoworking" value="impressora">
+                                <label for="servicoImpressora">Impressora/Scanner</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoRecepcao" name="servicoCoworking" value="recepcao">
+                                <label for="servicoRecepcao">Recepção</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoEnderecoFiscal" name="servicoCoworking" value="enderecofiscal">
+                                <label for="servicoEnderecoFiscal">Endereço fiscal</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="servicoOutroCoworking" name="servicoCoworking" value="outro">
+                                <label for="servicoOutroCoworking">Outros</label>
+                                <input type="text" id="servicoOutroCoworkingTexto" class="hidden-input" placeholder="Especifique">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Questionário para E-commerce -->
+                <div class="tipo-negocio-section" id="ecommerceSection">
+                    <h3>Questionário Específico - E-commerce</h3>
+                    
+                    <div class="form-group">
+                        <label>Categoria de Produtos</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="categoriaModa" name="categoriaEcommerce" value="moda">
+                                <label for="categoriaModa">Moda e Vestuário</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="categoriaBeleza" name="categoriaEcommerce" value="beleza">
+                                <label for="categoriaBeleza">Beleza e Cosméticos</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="categoriaEletronicos" name="categoriaEcommerce" value="eletronicos">
+                                <label for="categoriaEletronicos">Eletrônicos</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="categoriaAlimentos" name="categoriaEcommerce" value="alimentos">
+                                <label for="categoriaAlimentos">Alimentos e Bebidas</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="categoriaOutro" name="categoriaEcommerce" value="outro">
+                                <label for="categoriaOutro">Outros</label>
+                                <input type="text" id="categoriaOutroTexto" class="hidden-input" placeholder="Especifique">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="numProdutos">Número de produtos (SKUs)</label>
+                        <input type="number" id="numProdutos" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Modelo de Operação</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="modeloEstoqueProprio" name="modeloEcommerce" value="estoqueproprio">
+                                <label for="modeloEstoqueProprio">Estoque próprio</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="modeloDropshipping" name="modeloEcommerce" value="dropshipping">
+                                <label for="modeloDropshipping">Dropshipping</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="modeloMarketplace" name="modeloEcommerce" value="marketplace">
+                                <label for="modeloMarketplace">Marketplace</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="modeloHibridoEcommerce" name="modeloEcommerce" value="hibrido">
+                                <label for="modeloHibridoEcommerce">Modelo híbrido</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Plataformas de Venda</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="plataformaSiteProprio" name="plataformaEcommerce" value="siteproprio">
+                                <label for="plataformaSiteProprio">Site próprio</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="plataformaMarketplace" name="plataformaEcommerce" value="marketplace">
+                                <label for="plataformaMarketplace">Marketplaces (Mercado Livre, Amazon, etc.)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="plataformaRedesSociais" name="plataformaEcommerce" value="redessociais">
+                                <label for="plataformaRedesSociais">Redes Sociais (Instagram, Facebook)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="plataformaWhatsApp" name="plataformaEcommerce" value="whatsapp">
+                                <label for="plataformaWhatsApp">WhatsApp</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="plataformaOutro" name="plataformaEcommerce" value="outro">
+                                <label for="plataformaOutro">Outros</label>
+                                <input type="text" id="plataformaOutroTexto" class="hidden-input" placeholder="Especifique">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Questionário para Consultoria -->
+                <div class="tipo-negocio-section" id="consultoriaSection">
+                    <h3>Questionário Específico - Serviços de Consultoria</h3>
+                    
+                    <div class="form-group">
+                        <label>Área de Atuação</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="areaNegocios" name="areaConsultoria" value="negocios">
+                                <label for="areaNegocios">Negócios e Estratégia</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="areaMarketing" name="areaConsultoria" value="marketing">
+                                <label for="areaMarketing">Marketing e Vendas</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="areaFinancas" name="areaConsultoria" value="financas">
+                                <label for="areaFinancas">Finanças</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="areaRH" name="areaConsultoria" value="rh">
+                                <label for="areaRH">Recursos Humanos</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="areaTecnologia" name="areaConsultoria" value="tecnologia">
+                                <label for="areaTecnologia">Tecnologia</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="areaOutro" name="areaConsultoria" value="outro">
+                                <label for="areaOutro">Outros</label>
+                                <input type="text" id="areaOutroTexto" class="hidden-input" placeholder="Especifique">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Modelo de Serviço</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="modeloProjeto" name="modeloConsultoria" value="projeto">
+                                <label for="modeloProjeto">Projetos pontuais</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="modeloRecorrente" name="modeloConsultoria" value="recorrente">
+                                <label for="modeloRecorrente">Consultoria recorrente</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="modeloMentoria" name="modeloConsultoria" value="mentoria">
+                                <label for="modeloMentoria">Mentoria</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="modeloTreinamento" name="modeloConsultoria" value="treinamento">
+                                <label for="modeloTreinamento">Treinamentos e workshops</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="modeloOutroConsultoria" name="modeloConsultoria" value="outro">
+                                <label for="modeloOutroConsultoria">Outro</label>
+                                <input type="text" id="modeloOutroConsultoriaTexto" class="hidden-input" placeholder="Especifique">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Público-Alvo</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="publicoStartups" name="publicoConsultoria" value="startups">
+                                <label for="publicoStartups">Startups</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="publicoPMEs" name="publicoConsultoria" value="pmes">
+                                <label for="publicoPMEs">Pequenas e Médias Empresas</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="publicoGrandes" name="publicoConsultoria" value="grandes">
+                                <label for="publicoGrandes">Grandes Empresas</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="publicoPessoasFisicas" name="publicoConsultoria" value="pessoasfisicas">
+                                <label for="publicoPessoasFisicas">Pessoas Físicas</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="publicoOutro" name="publicoConsultoria" value="outro">
+                                <label for="publicoOutro">Outros</label>
+                                <input type="text" id="publicoOutroTexto" class="hidden-input" placeholder="Especifique">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-navigation">
+                    <button type="button" class="prev-btn"><i class="fas fa-arrow-left"></i> Anterior</button>
+                    <button type="button" class="next-btn">Próximo <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </section>
+
+            <!-- Seção 3: Informações Financeiras -->
+            <section class="form-section" id="section3">
+                <h2>Informações Financeiras</h2>
+                
+                <div class="form-group">
+                    <label for="capitalInicial">Valor disponível para investimento inicial (R$)</label>
+                    <input type="number" id="capitalInicial" min="0" step="1000">
+                </div>
+                
+                <div class="form-group">
+                    <label>Fontes de financiamento</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="fonteCapitalProprio" name="fontesFinanciamento" value="capitalproprio">
+                            <label for="fonteCapitalProprio">Capital próprio</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="fonteInvestidores" name="fontesFinanciamento" value="investidores">
+                            <label for="fonteInvestidores">Investidores</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="fonteEmprestimos" name="fontesFinanciamento" value="emprestimos">
+                            <label for="fonteEmprestimos">Empréstimos</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="fonteCrowdfunding" name="fontesFinanciamento" value="crowdfunding">
+                            <label for="fonteCrowdfunding">Crowdfunding</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="fonteOutros" name="fontesFinanciamento" value="outros">
+                            <label for="fonteOutros">Outros</label>
+                            <input type="text" id="fonteOutrosTexto" class="hidden-input" placeholder="Especifique">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="orcamentoMarketing">Orçamento mensal disponível para marketing digital (R$)</label>
+                    <input type="number" id="orcamentoMarketing" min="0" step="100">
+                </div>
+                
+                <div class="form-group">
+                    <label for="percentualTrafegoPago">Percentual do orçamento destinado a tráfego pago (%)</label>
+                    <input type="number" id="percentualTrafegoPago" min="0" max="100">
+                </div>
+                
+                <div class="form-group">
+                    <label for="expectativaROI">Expectativa de retorno sobre investimento - ROI (%)</label>
+                    <input type="number" id="expectativaROI" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="faturamentoEsperado">Faturamento mensal esperado nos primeiros 6 meses (R$)</label>
+                    <input type="number" id="faturamentoEsperado" min="0" step="1000">
+                </div>
+                
+                <div class="form-group">
+                    <label for="custosMensais">Principais custos fixos mensais</label>
+                    <textarea id="custosMensais" placeholder="Liste os principais custos fixos mensais"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="margemLucro">Margem de lucro esperada (%)</label>
+                    <input type="number" id="margemLucro" min="0" max="100">
+                </div>
+
+                <div class="form-navigation">
+                    <button type="button" class="prev-btn"><i class="fas fa-arrow-left"></i> Anterior</button>
+                    <button type="button" class="next-btn">Próximo <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </section>
+
+            <!-- Seção 4: Perfil dos Sócios -->
+            <section class="form-section" id="section4">
+                <h2>Perfil dos Sócios</h2>
+                
+                <div id="sociosContainer">
+                    <div class="socio-section" data-socio="1">
+                        <h3>Sócia 1</h3>
+                        
+                        <div class="form-group">
+                            <label for="nomeSocio1">Nome</label>
+                            <input type="text" id="nomeSocio1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="idadeSocio1">Idade</label>
+                            <input type="number" id="idadeSocio1" min="18" max="100">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="formacaoSocio1">Formação acadêmica</label>
+                            <input type="text" id="formacaoSocio1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="experienciaSocio1">Experiência profissional relevante</label>
+                            <textarea id="experienciaSocio1"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Estilo de liderança</label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="liderancaDemocratico1" name="liderancaSocio1" value="democratico">
+                                    <label for="liderancaDemocratico1">Democrático</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="liderancaAutocratico1" name="liderancaSocio1" value="autocratico">
+                                    <label for="liderancaAutocratico1">Autocrático</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="liderancaLiberal1" name="liderancaSocio1" value="liberal">
+                                    <label for="liderancaLiberal1">Liberal</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="liderancaCoaching1" name="liderancaSocio1" value="coaching">
+                                    <label for="liderancaCoaching1">Coaching</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="liderancaOutro1" name="liderancaSocio1" value="outro">
+                                    <label for="liderancaOutro1">Outro</label>
+                                    <input type="text" id="liderancaOutroTexto1" class="hidden-input" placeholder="Especifique">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Principais habilidades</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="habilidadeComunicacao1" name="habilidadeSocio1" value="comunicacao">
+                                    <label for="habilidadeComunicacao1">Comunicação</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="habilidadeOrganizacao1" name="habilidadeSocio1" value="organizacao">
+                                    <label for="habilidadeOrganizacao1">Organização</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="habilidadeCriatividade1" name="habilidadeSocio1" value="criatividade">
+                                    <label for="habilidadeCriatividade1">Criatividade</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="habilidadeAnalise1" name="habilidadeSocio1" value="analise">
+                                    <label for="habilidadeAnalise1">Análise de dados</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="habilidadeNegociacao1" name="habilidadeSocio1" value="negociacao">
+                                    <label for="habilidadeNegociacao1">Negociação</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="habilidadeGestao1" name="habilidadeSocio1" value="gestao">
+                                    <label for="habilidadeGestao1">Gestão de pessoas</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="habilidadeMarketing1" name="habilidadeSocio1" value="marketing">
+                                    <label for="habilidadeMarketing1">Marketing</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="habilidadeFinancas1" name="habilidadeSocio1" value="financas">
+                                    <label for="habilidadeFinancas1">Finanças</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="habilidadeTecnologia1" name="habilidadeSocio1" value="tecnologia">
+                                    <label for="habilidadeTecnologia1">Tecnologia</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="habilidadeOutras1" name="habilidadeSocio1" value="outras">
+                                    <label for="habilidadeOutras1">Outras</label>
+                                    <input type="text" id="habilidadeOutrasTexto1" class="hidden-input" placeholder="Especifique">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="horasSemanais1">Horas semanais disponíveis para o negócio</label>
+                            <input type="number" id="horasSemanais1" min="0" max="168">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="areasAtuacao1">Áreas de atuação preferidas no negócio</label>
+                            <textarea id="areasAtuacao1" placeholder="Liste as áreas em que prefere atuar"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button" id="adicionarSocio" class="btn-secondary">
+                    <i class="fas fa-plus"></i> Adicionar Sócia
+                </button>
+
+                <div class="form-navigation">
+                    <button type="button" class="prev-btn"><i class="fas fa-arrow-left"></i> Anterior</button>
+                    <button type="button" class="next-btn">Próximo <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </section>
+
+            <!-- Seção 5: Presença Digital Atual -->
+            <section class="form-section" id="section5">
+                <h2>Presença Digital Atual</h2>
+                
+                <div class="form-group">
+                    <label>Canais Existentes</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="canalWebsite" name="canalDigital" value="website">
+                            <label for="canalWebsite">Website</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="canalInstagram" name="canalDigital" value="instagram">
+                            <label for="canalInstagram">Instagram</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="canalFacebook" name="canalDigital" value="facebook">
+                            <label for="canalFacebook">Facebook</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="canalLinkedIn" name="canalDigital" value="linkedin">
+                            <label for="canalLinkedIn">LinkedIn</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="canalTikTok" name="canalDigital" value="tiktok">
+                            <label for="canalTikTok">TikTok</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="canalYouTube" name="canalDigital" value="youtube">
+                            <label for="canalYouTube">YouTube</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="canalPinterest" name="canalDigital" value="pinterest">
+                            <label for="canalPinterest">Pinterest</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="canalTwitter" name="canalDigital" value="twitter">
+                            <label for="canalTwitter">Twitter/X</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="canalWhatsApp" name="canalDigital" value="whatsapp">
+                            <label for="canalWhatsApp">WhatsApp Business</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="canalOutros" name="canalDigital" value="outros">
+                            <label for="canalOutros">Outros</label>
+                            <input type="text" id="canalOutrosTexto" class="hidden-input" placeholder="Especifique">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="numSeguidores">Número de seguidores (se aplicável)</label>
+                    <input type="number" id="numSeguidores" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="taxaEngajamento">Taxa de engajamento (se aplicável)</label>
+                    <input type="text" id="taxaEngajamento" placeholder="Ex: 2.5%">
+                </div>
+                
+                <div class="form-group">
+                    <label for="trafegoMensal">Tráfego mensal no site (se aplicável)</label>
+                    <input type="number" id="trafegoMensal" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="taxaConversao">Taxa de conversão (se aplicável)</label>
+                    <input type="text" id="taxaConversao" placeholder="Ex: 1.8%">
+                </div>
+                
+                <div class="form-group">
+                    <label>Ferramentas em Uso</label>
+                    <div class="form-subgroup">
+                        <label for="ferramentaCRM">CRM</label>
+                        <input type="text" id="ferramentaCRM">
+                    </div>
+                    <div class="form-subgroup">
+                        <label for="ferramentaAutomacao">Automação de marketing</label>
+                        <input type="text" id="ferramentaAutomacao">
+                    </div>
+                    <div class="form-subgroup">
+                        <label for="ferramentaMidias">Gestão de mídias sociais</label>
+                        <input type="text" id="ferramentaMidias">
+                    </div>
+                    <div class="form-subgroup">
+                        <label for="ferramentaAnalytics">Analytics</label>
+                        <input type="text" id="ferramentaAnalytics">
+                    </div>
+                    <div class="form-subgroup">
+                        <label for="ferramentaOutras">Outras</label>
+                        <input type="text" id="ferramentaOutras">
+                    </div>
+                </div>
+
+                <div class="form-navigation">
+                    <button type="button" class="prev-btn"><i class="fas fa-arrow-left"></i> Anterior</button>
+                    <button type="button" class="next-btn">Próximo <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </section>
+
+            <!-- Seção 6: Expectativas e Necessidades -->
+            <section class="form-section" id="section6">
+                <h2>Expectativas e Necessidades</h2>
+                
+                <div class="form-group">
+                    <label for="desafiosAtuais">Principais desafios que seu negócio enfrenta</label>
+                    <textarea id="desafiosAtuais" placeholder="Liste os principais desafios que seu negócio enfrenta atualmente"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Áreas Prioritárias</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="areaPlanejamento" name="areaPrioritaria" value="planejamento">
+                            <label for="areaPlanejamento">Planejamento estratégico</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="areaMarketing" name="areaPrioritaria" value="marketing">
+                            <label for="areaMarketing">Marketing e vendas</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="areaOperacoes" name="areaPrioritaria" value="operacoes">
+                            <label for="areaOperacoes">Operações e logística</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="areaFinanceira" name="areaPrioritaria" value="financeira">
+                            <label for="areaFinanceira">Gestão financeira</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="areaRH" name="areaPrioritaria" value="rh">
+                            <label for="areaRH">Recursos humanos</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="areaTecnologia" name="areaPrioritaria" value="tecnologia">
+                            <label for="areaTecnologia">Tecnologia</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="areaExpansao" name="areaPrioritaria" value="expansao">
+                            <label for="areaExpansao">Expansão</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="areaOutras" name="areaPrioritaria" value="outras">
+                            <label for="areaOutras">Outras</label>
+                            <input type="text" id="areaOutrasTexto" class="hidden-input" placeholder="Especifique">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="expectativasConsultoria">O que você espera alcançar com esta consultoria?</label>
+                    <textarea id="expectativasConsultoria" placeholder="Descreva suas expectativas para esta consultoria"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="resultadosPrioritarios">Quais resultados são prioritários?</label>
+                    <textarea id="resultadosPrioritarios" placeholder="Liste os resultados que você considera prioritários"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tempoResultados">Em quanto tempo espera ver os primeiros resultados?</label>
+                    <select id="tempoResultados">
+                        <option value="">Selecione uma opção</option>
+                        <option value="1mes">1 mês</option>
+                        <option value="3meses">3 meses</option>
+                        <option value="6meses">6 meses</option>
+                        <option value="1ano">1 ano</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="emailContato">Email para receber o relatório de consultoria</label>
+                    <input type="email" id="emailContato" placeholder="seu@email.com" required>
+                    <div class="form-hint">Enviaremos um relatório detalhado de consultoria para este email após o envio do formulário.</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="observacoesFinais">Observações adicionais</label>
+                    <textarea id="observacoesFinais" placeholder="Compartilhe qualquer informação adicional que considere relevante"></textarea>
+                </div>
+
+                <div class="form-navigation">
+                    <button type="button" class="prev-btn"><i class="fas fa-arrow-left"></i> Anterior</button>
+                    <button type="button" id="submitBtn" class="submit-btn">Enviar <i class="fas fa-paper-plane"></i></button>
+                </div>
+            </section>
+        </form>
+
+        <div id="successMessage" class="success-message hidden">
+            <i class="fas fa-check-circle"></i>
+            <h2>Formulário enviado com sucesso!</h2>
+            <p>Obrigado por preencher o template de consultoria. Seu relatório de consultoria personalizado foi enviado para o email informado.</p>
+            <p>Você também receberá em breve o board do Trello com todas as tarefas para implementação do seu projeto.</p>
+            <p>Verifique sua caixa de entrada e pasta de spam caso não encontre o email.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Consultoria para Mulheres Empreendedoras. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

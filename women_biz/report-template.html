@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Consultoria - {{nome_negocio}}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #8e44ad;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+        .content {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+        h1, h2, h3 {
+            color: #8e44ad;
+        }
+        .section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .recommendation {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #8e44ad;
+            margin: 15px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        .logo {
+            max-width: 150px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Relatório de Consultoria</h1>
+        <p>Preparado especialmente para {{nome_negocio}}</p>
+        <p>Data: {{data_envio}}</p>
+    </div>
+    
+    <div class="content">
+        <div class="section">
+            <h2>Resumo Executivo</h2>
+            <p>Este relatório de consultoria foi elaborado com base nas informações fornecidas sobre seu negócio de <strong>{{tipo_negocio}}</strong>. Apresentamos a seguir uma análise detalhada e recomendações personalizadas para impulsionar o crescimento do seu empreendimento.</p>
+            
+            <h3>Perfil do Negócio</h3>
+            <table>
+                <tr>
+                    <th>Tipo de Negócio</th>
+                    <td>{{tipo_negocio}}</td>
+                </tr>
+                <tr>
+                    <th>Estágio Atual</th>
+                    <td>{{estagio_negocio}}</td>
+                </tr>
+                <tr>
+                    <th>Localização</th>
+                    <td>{{localizacao}}</td>
+                </tr>
+                <tr>
+                    <th>Alcance Geográfico</th>
+                    <td>{{alcance}}</td>
+                </tr>
+                <tr>
+                    <th>Modelo de Operação</th>
+                    <td>{{modelo_operacao}}</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>Análise SWOT</h2>
+            
+            <h3>Forças</h3>
+            <ul>
+                <li>Empreendimento liderado por mulheres, o que pode ser um diferencial no mercado</li>
+                <li>Modelo de negócio com potencial de escalabilidade</li>
+                <li>Foco em um nicho específico do mercado</li>
+            </ul>
+            
+            <h3>Fraquezas</h3>
+            <ul>
+                <li>Possível limitação de capital inicial para investimentos</li>
+                <li>Necessidade de desenvolvimento de competências específicas</li>
+                <li>Concorrência estabelecida no mercado</li>
+            </ul>
+            
+            <h3>Oportunidades</h3>
+            <ul>
+                <li>Crescimento do mercado de {{tipo_negocio}}</li>
+                <li>Possibilidade de parcerias estratégicas</li>
+                <li>Tendências favoráveis no comportamento do consumidor</li>
+            </ul>
+            
+            <h3>Ameaças</h3>
+            <ul>
+                <li>Instabilidade econômica</li>
+                <li>Mudanças regulatórias no setor</li>
+                <li>Novos entrantes no mercado</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Recomendações Estratégicas</h2>
+            
+            <div class="recommendation">
+                <h3>Ferramentas de Social Media</h3>
+                <p>Com base no seu tipo de negócio ({{tipo_negocio}}), recomendamos as seguintes plataformas:</p>
+                <ul id="social-media-recommendations">
+                    <!-- Recomendações específicas por tipo de negócio -->
+                    {{#if tipo_negocio == 'AirBnb/Hospedagem'}}
+                    <li><strong>Instagram:</strong> Foco em conteúdo visual das propriedades e experiências dos hóspedes</li>
+                    <li><strong>Pinterest:</strong> Criação de boards temáticos para inspiração</li>
+                    <li><strong>Google Meu Negócio:</strong> Essencial para visibilidade local</li>
+                    {{/if}}
+                    
+                    {{#if tipo_negocio == 'Host de Eventos'}}
+                    <li><strong>Instagram:</strong> Portfólio visual de eventos realizados</li>
+                    <li><strong>LinkedIn:</strong> Foco em eventos corporativos</li>
+                    <li><strong>TikTok:</strong> Conteúdo de bastidores e montagens de eventos</li>
+                    {{/if}}
+                    
+                    {{#if tipo_negocio == 'Coworking'}}
+                    <li><strong>LinkedIn:</strong> Principal canal para captação de clientes</li>
+                    <li><strong>Instagram:</strong> Showcase do espaço e comunidade</li>
+                    <li><strong>Google Meu Negócio:</strong> Essencial para buscas locais</li>
+                    {{/if}}
+                    
+                    {{#if tipo_negocio == 'E-commerce'}}
+                    <li><strong>Instagram:</strong> Vitrine de produtos com recursos de compra</li>
+                    <li><strong>Pinterest:</strong> Inspiração e descoberta de produtos</li>
+                    <li><strong>Facebook:</strong> Marketplace e grupos de nicho</li>
+                    {{/if}}
+                    
+                    {{#if tipo_negocio == 'Serviços de Consultoria'}}
+                    <li><strong>LinkedIn:</strong> Construção de autoridade e networking profissional</li>
+                    <li><strong>Instagram:</strong> Compartilhamento de conteúdo educativo</li>
+                    <li><strong>YouTube:</strong> Vídeos explicativos e cases de sucesso</li>
+                    {{/if}}
+                </ul>
+            </div>
+            
+            <div class="recommendation">
+                <h3>Soluções de CRM</h3>
+                <p>Considerando o estágio atual do seu negócio ({{estagio_negocio}}), recomendamos:</p>
+                <ul id="crm-recommendations">
+                    <!-- Recomendações baseadas no estágio do negócio -->
+                    {{#if estagio_negocio == 'Ideia' || estagio_negocio == 'Planejamento'}}
+                    <li><strong>HubSpot CRM (gratuito):</strong> Ideal para gestão básica de contatos e pipeline de vendas</li>
+                    <li><strong>Trello + Extensões CRM:</strong> Solução flexível e de baixo custo</li>
+                    <li><strong>Notion:</strong> Sistema personalizável para gestão de clientes</li>
+                    {{/if}}
+                    
+                    {{#if estagio_negocio == 'Operação Inicial'}}
+                    <li><strong>Pipedrive:</strong> Foco em gestão de pipeline de vendas</li>
+                    <li><strong>RD Station CRM:</strong> Solução brasileira com bom suporte local</li>
+                    <li><strong>Monday.com:</strong> Altamente personalizável para diferentes tipos de negócio</li>
+                    {{/if}}
+                    
+                    {{#if estagio_negocio == 'Em Expansão'}}
+                    <li><strong>Salesforce:</strong> Solução completa e escalável</li>
+                    <li><strong>HubSpot (pago):</strong> Suite completa de marketing, vendas e atendimento</li>
+                    <li><strong>Zoho CRM:</strong> Bom custo-benefício para empresas em crescimento</li>
+                    {{/if}}
+                </ul>
+            </div>
+            
+            <div class="recommendation">
+                <h3>Estratégia de Tráfego Pago</h3>
+                <p>Para maximizar seu investimento em marketing digital, recomendamos:</p>
+                <ul id="paid-traffic-recommendations">
+                    <!-- Recomendações baseadas no tipo e estágio do negócio -->
+                    {{#if tipo_negocio == 'AirBnb/Hospedagem'}}
+                    <li><strong>Google Ads (40% do orçamento):</strong> Campanhas de pesquisa focadas em termos como "airbnb em [localidade]", "hospedagem em [localidade]"</li>
+                    <li><strong>Meta Ads - Facebook/Instagram (40% do orçamento):</strong> Campanhas de conversão com segmentação por interesse em viagens</li>
+                    <li><strong>Pinterest Ads (20% do orçamento):</strong> Campanhas de awareness para inspiração de viagem</li>
+                    {{/if}}
+                    
+                    {{#if tipo_negocio == 'Host de Eventos'}}
+                    <li><strong>Google Ads (35% do orçamento):</strong> Campanhas de pesquisa para termos como "espaço para eventos em [localidade]"</li>
+                    <li><strong>Meta Ads - Facebook/Instagram (35% do orçamento):</strong> Campanhas segmentadas por eventos de vida (noivado, casamento, formatura)</li>
+                    <li><strong>LinkedIn Ads (30% do orçamento):</strong> Campanhas por cargo e setor de atuação para eventos corporativos</li>
+                    {{/if}}
+                    
+                    {{#if tipo_negocio == 'Coworking'}}
+                    <li><strong>Google Ads (40% do orçamento):</strong> Campanhas de pesquisa para termos como "coworking em [localidade]", "escritório compartilhado"</li>
+                    <li><strong>LinkedIn Ads (40% do orçamento):</strong> Campanhas segmentadas por profissão, cargo e localidade</li>
+                    <li><strong>Meta Ads - Facebook/Instagram (20% do orçamento):</strong> Campanhas de remarketing e awareness local</li>
+                    {{/if}}
+                    
+                    {{#if tipo_negocio == 'E-commerce'}}
+                    <li><strong>Google Shopping (40% do orçamento):</strong> Listagem de produtos em resultados de pesquisa</li>
+                    <li><strong>Meta Ads - Facebook/Instagram (40% do orçamento):</strong> Campanhas de catálogo de produtos e remarketing dinâmico</li>
+                    <li><strong>Pinterest Ads (20% do orçamento):</strong> Pins promovidos para produtos específicos</li>
+                    {{/if}}
+                    
+                    {{#if tipo_negocio == 'Serviços de Consultoria'}}
+                    <li><strong>LinkedIn Ads (50% do orçamento):</strong> Campanhas de geração de leads segmentadas por cargo e setor</li>
+                    <li><strong>Google Ads (30% do orçamento):</strong> Campanhas de pesquisa para termos específicos do seu nicho de consultoria</li>
+                    <li><strong>Meta Ads - Facebook/Instagram (20% do orçamento):</strong> Remarketing e campanhas de conteúdo educativo</li>
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Próximos Passos</h2>
+            <p>Para implementar as recomendações deste relatório, criamos um board no Trello com todas as tarefas necessárias. Você receberá um convite para acessar este board nos próximos dias.</p>
+            
+            <p>O board está organizado nas seguintes listas:</p>
+            <ol>
+                <li><strong>Planejamento Estratégico</strong> - Definição de missão, visão, valores e objetivos</li>
+                <li><strong>Estruturação Legal e Financeira</strong> - Registro da empresa, conta bancária, regime tributário</li>
+                <li><strong>Marketing e Branding</strong> - Identidade visual, website, redes sociais</li>
+                <li><strong>Vendas e Atendimento</strong> - Implementação de CRM, funil de vendas</li>
+                <li><strong>Operações</strong> - Processos, fornecedores, controle de qualidade</li>
+                <li><strong>Tecnologia</strong> - Ferramentas, automações, segurança digital</li>
+            </ol>
+            
+            <p>Cada tarefa inclui:</p>
+            <ul>
+                <li>Descrição detalhada do que precisa ser feito</li>
+                <li>Checklist com passos específicos</li>
+                <li>Data de vencimento recomendada</li>
+                <li>Recursos e ferramentas sugeridas</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Suporte Contínuo</h2>
+            <p>Como parte desta consultoria, você tem direito a:</p>
+            <ul>
+                <li>3 meses de acompanhamento mensal</li>
+                <li>Acesso à nossa biblioteca de recursos para empreendedoras</li>
+                <li>Participação na comunidade exclusiva de mulheres empreendedoras</li>
+            </ul>
+            
+            <p>Para agendar sua primeira sessão de acompanhamento ou esclarecer dúvidas sobre este relatório, entre em contato pelo email: <a href="mailto:contato@consultoria-empreendedoras.com">contato@consultoria-empreendedoras.com</a></p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2025 Consultoria para Mulheres Empreendedoras. Todos os direitos reservados.</p>
+        <p>Este relatório foi gerado automaticamente com base nas informações fornecidas no formulário de consultoria.</p>
+    </div>
+</body>
+</html>

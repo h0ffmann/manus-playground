@@ -1,0 +1,25 @@
+{
+  "name": "consultoria-empreendedoras",
+  "version": "1.0.0",
+  "description": "Template de consultoria para mulheres empreendedoras",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -p 8000",
+    "generate-report": "node generate-report.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "consultoria",
+    "empreendedorismo",
+    "mulheres",
+    "negócios"
+  ],
+  "author": "Consultoria para Mulheres Empreendedoras",
+  "license": "MIT",
+  "dependencies": {
+    "emailjs-com": "^3.2.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
