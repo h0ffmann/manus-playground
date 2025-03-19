@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pirsig & Nietzsche: Philosophical Connections</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+    <script src="interactive.js"></script>
+</head>
+<body>
+    <header>
+        <nav id="main-nav">
+            <div class="logo">
+                <h1>Pirsig & Nietzsche</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#philosophers">Philosophers</a></li>
+                <li><a href="#common-themes">Common Themes</a></li>
+                <li><a href="#greek-philosophy">Greek Philosophy</a></li>
+                <li><a href="#interactive">Interactive Tools</a></li>
+                <li><a href="#resources">Resources</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>The Common Ground Between Robert M. Pirsig and Friedrich Nietzsche</h1>
+            <p>Exploring the philosophical connections between two revolutionary thinkers</p>
+            <a href="#common-themes" class="cta-button">Explore Common Themes</a>
+        </div>
+    </section>
+
+    <section id="philosophers" class="philosophers-section">
+        <h2 class="section-title">The Philosophers</h2>
+        <div class="philosopher-cards">
+            <div class="philosopher-card">
+                <div class="philosopher-image">
+                    <img src="images/pirsig.jpg" alt="Robert M. Pirsig" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22150%22%20height%3D%22150%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22150%22%20height%3D%22150%22%20fill%3D%22%23d1e1f9%22%2F%3E%3Ctext%20x%3D%2275%22%20y%3D%2275%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%20alignment-baseline%3D%22middle%22%20fill%3D%22%233a6ea5%22%3EPirsig%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                </div>
+                <h3>Robert M. Pirsig</h3>
+                <p class="years">1928-2017</p>
+                <p class="description">American writer and philosopher known for his "Metaphysics of Quality" and the bestselling philosophical novel "Zen and the Art of Motorcycle Maintenance."</p>
+                <div class="key-concepts">
+                    <h4>Key Concepts:</h4>
+                    <ul>
+                        <li>Quality</li>
+                        <li>Metaphysics of Quality (MOQ)</li>
+                        <li>Classical/Romantic Understanding</li>
+                        <li>Static/Dynamic Quality Patterns</li>
+                    </ul>
+                </div>
+                <button class="expand-btn" data-target="pirsig-details">Learn More</button>
+                <div id="pirsig-details" class="expanded-content">
+                    <h4>Biography</h4>
+                    <p>Robert Maynard Pirsig was born in 1928 in Minneapolis, Minnesota. His intellectual journey included studies in chemistry, journalism, and Eastern philosophy. After suffering a mental breakdown that led to hospitalization and electroconvulsive therapy, Pirsig emerged with a transformed philosophical outlook.</p>
+                    
+                    <h4>Key Works</h4>
+                    <ul>
+                        <li>"Zen and the Art of Motorcycle Maintenance" (1974)</li>
+                        <li>"Lila: An Inquiry Into Morals" (1991)</li>
+                    </ul>
+                    
+                    <h4>Philosophical Approach</h4>
+                    <p>Pirsig developed his Metaphysics of Quality as an alternative to subject-object metaphysics. He combined narrative, autobiography, and philosophical discourse in his writing, using the metaphor of a motorcycle journey to explore philosophical ideas.</p>
+                </div>
+            </div>
+
+            <div class="philosopher-card">
+                <div class="philosopher-image">
+                    <img src="images/nietzsche.jpg" alt="Friedrich Nietzsche" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22150%22%20height%3D%22150%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22150%22%20height%3D%22150%22%20fill%3D%22%23f9d1d1%22%2F%3E%3Ctext%20x%3D%2275%22%20y%3D%2275%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%20alignment-baseline%3D%22middle%22%20fill%3D%22%23c25b56%22%3ENietzsche%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                </div>
+                <h3>Friedrich Nietzsche</h3>
+                <p class="years">1844-1900</p>
+                <p class="description">German philosopher, cultural critic, and philologist whose work has exerted a profound influence on modern intellectual history.</p>
+                <div class="key-concepts">
+                    <h4>Key Concepts:</h4>
+                    <ul>
+                        <li>Will to Power</li>
+                        <li>Apollonian/Dionysian Dichotomy</li>
+                        <li>Eternal Recurrence</li>
+                        <li>Master/Slave Morality</li>
+                        <li>Übermensch</li>
+                    </ul>
+                </div>
+                <button class="expand-btn" data-target="nietzsche-details">Learn More</button>
+                <div id="nietzsche-details" class="expanded-content">
+                    <h4>Biography</h4>
+                    <p>Friedrich Nietzsche was born in 1844 in Röcken, Germany. After a brilliant academic career that led to his appointment as a professor of classical philology at the University of Basel at just 24 years old, Nietzsche developed health problems that forced his retirement. He spent the next decade producing his most significant philosophical works before suffering a mental collapse in 1889.</p>
+                    
+                    <h4>Key Works</h4>
+                    <ul>
+                        <li>"The Birth of Tragedy" (1872)</li>
+                        <li>"Thus Spoke Zarathustra" (1883-1885)</li>
+                        <li>"Beyond Good and Evil" (1886)</li>
+                        <li>"On the Genealogy of Morality" (1887)</li>
+                        <li>"Twilight of the Idols" (1888)</li>
+                    </ul>
+                    
+                    <h4>Philosophical Approach</h4>
+                    <p>Nietzsche's philosophical style is distinctive and often challenging, featuring aphoristic writing, perspectivism, psychological analysis, and cultural criticism. He rejected creating a systematic philosophy, preferring a more experimental approach.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="common-themes" class="common-themes-section">
+        <h2 class="section-title">Common Philosophical Themes</h2>
+        <div class="theme-container">
+            <div class="theme-card" id="dualistic-frameworks">
+                <h3>Dualistic Frameworks</h3>
+                <div class="theme-content">
+                    <p>Both philosophers developed dualistic frameworks to understand human experience and culture.</p>
+                    <div class="comparison-table">
+                        <div class="comparison-column">
+                            <h4>Pirsig</h4>
+                            <p><strong>Classical Understanding:</strong> Focuses on underlying form, analysis, and rational thought</p>
+                            <p><strong>Romantic Understanding:</strong> Emphasizes immediate appearance, intuition, and emotional response</p>
+                        </div>
+                        <div class="comparison-column">
+                            <h4>Nietzsche</h4>
+                            <p><strong>Apollonian:</strong> Represents order, rationality, individuation, and structured consciousness</p>
+                            <p><strong>Dionysian:</strong> Represents chaos, intoxication, dissolution of boundaries, and collective experience</p>
+                        </div>
+                    </div>
+                    <p>Both recognized these opposing yet complementary forces in human experience and sought their integration.</p>
+                </div>
+            </div>
+
+            <div class="theme-card" id="critique-rationality">
+                <h3>Critique of Pure Rationality</h3>
+                <div class="theme-content">
+                    <p>Both philosophers challenged the dominance of pure rationality in Western thought.</p>
+                    <div class="comparison-table">
+                        <div class="comparison-column">
+                            <h4>Pirsig's Critique</h4>
+                            <p>Criticized the "slice and dice" schemes of technology and analytical thinking</p>
+                            <p>Argued that rational thought may find a truth but it may never be universally applicable to every individual's experience</p>
+                        </div>
+                        <div class="comparison-column">
+                            <h4>Nietzsche's Critique</h4>
+                            <p>Lamented that since Socrates, Western culture has been biased toward the Apollonian, championing rationality over vitality</p>
+                            <p>Criticized the "corpselike" nature of purely rational "healthy-mindedness"</p>
+                        </div>
+                    </div>
+                    <p>Both thinkers saw the overemphasis on rationality as a limitation of Western philosophy and sought more holistic approaches to understanding reality.</p>
+                </div>
+            </div>
+
+            <div class="theme-card" id="quality-will-power">
+                <h3>Quality/Value Creation vs. Will to Power</h3>
+                <div class="theme-content">
+                    <p>Both philosophers developed central concepts related to the creation and recognition of value.</p>
+                    <div class="comparison-table">
+                        <div class="comparison-column">
+                            <h4>Pirsig's Concept of Quality</h4>
+                            <p>Quality is undefinable but recognizable through direct experience</p>
+                            <p>Quality precedes intellectual constructions of it</p>
+                            <p>Quality is the fundamental force stimulating everything to evolve</p>
+                        </div>
+                        <div class="comparison-column">
+                            <h4>Nietzsche's Will to Power</h4>
+                            <p>An irrational force found in all individuals that can be channeled toward different ends</p>
+                            <p>Not simply about domination but about mastery, creativity, and self-overcoming</p>
+                            <p>The basis for value creation in a world without inherent meaning</p>
+                        </div>
+                    </div>
+                    <p>Both concepts represent attempts to identify a fundamental driving force behind human experience and value creation.</p>
+                </div>
+            </div>
+
+            <div class="theme-card" id="subject-object">
+                <h3>Rejection of Subject-Object Dualism</h3>
+                <div class="theme-content">
+                    <p>Both philosophers challenged traditional subject-object distinctions.</p>
+                    <div class="comparison-table">
+                        <div class="comparison-column">
+                            <h4>Pirsig's Approach</h4>
+                            <p>Rejected the subject-object division as artificial</p>
+                            <p>Referenced the Sanskrit doctrine of Tat Tvam Asi ("Thou art that"), which asserts that everything you think you are (Subjective) and everything you think you perceive (Objective) are undivided</p>
+                        </div>
+                        <div class="comparison-column">
+                            <h4>Nietzsche's Approach</h4>
+                            <p>Challenged Cartesian dualism through his perspectivism</p>
+                            <p>Rejected the notion of a stable, unified self separate from experience</p>
+                            <p>Viewed the subject-object distinction as a grammatical habit rather than a metaphysical truth</p>
+                        </div>
+                    </div>
+                    <p>Both thinkers sought to overcome what they saw as artificial divisions between self and world, subject and object.</p>
+                </div>
+            </div>
+
+            <div class="theme-card" id="direct-experience">
+                <h3>Emphasis on Direct Experience</h3>
+                <div class="theme-content">
+                    <p>Both philosophers privileged direct experience over abstract theorizing.</p>
+                    <div class="comparison-table">
+                        <div class="comparison-column">
+                            <h4>Pirsig's Emphasis</h4>
+                            <p>Quality is recognized before it can be intellectualized</p>
+                            <p>The pre-intellectual cutting edge of reality is where Quality resides</p>
+                            <p>Motorcycle maintenance as a practical engagement with reality</p>
+                        </div>
+                        <div class="comparison-column">
+                            <h4>Nietzsche's Emphasis</h4>
+                            <p>Criticized "otherworldly" philosophies that devalue lived experience</p>
+                            <p>Emphasized embodied knowledge over abstract reasoning</p>
+                            <p>Valued art for its ability to engage with life directly</p>
+                        </div>
+                    </div>
+                    <p>Both thinkers were suspicious of purely abstract philosophical systems and sought to ground their thinking in lived experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="greek-philosophy" class="greek-philosophy-section">
+        <h2 class="section-title">Greek Philosophy Connections</h2>
+        <div class="greek-intro">
+            <p>Both Pirsig and Nietzsche engaged deeply with Greek philosophy, particularly focusing on the transition from pre-Socratic to Socratic thought.</p>
+        </div>
+        
+        <div class="greek-themes">
+            <div class="greek-theme-card" id="pre-socratic">
+                <h3>The Pre-Socratic/Socratic Divide</h3>
+                <div class="theme-content">
+                    <p>Both philosophers identified a crucial turning point in Greek philosophy with the emergence of Socrates and the subsequent development of Platonic thought.</p>
+                    <div class="comparison-table">
+                        <div class="comparison-column">
+                            <h4>Pirsig's View</h4>
+                            <p>Argued that pre-Socratic Greeks did not separate "Quality" from "Truth"—they were one and the same concept, expressed as <em>aretē</em></p>
+                            <p>Contended that Socrates and Plato artificially divided this unified concept, creating a harmful dualism</p>
+                        </div>
+                        <div class="comparison-column">
+                            <h4>Nietzsche's View</h4>
+                            <p>Identified a fundamental shift with Socrates, whom he characterized as representing a new type of Greek who privileged rationality over the earlier, more holistic Greek sensibility</p>
+                            <p>Saw this as a decline rather than progress in Greek thought</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="greek<response clipped><NOTE>To save on context only part of this file has been shown to you. You should retry this tool after you have searched inside the file with `grep -n` in order to find the line numbers of what you are looking for.</NOTE>
