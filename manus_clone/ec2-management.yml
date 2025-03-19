@@ -1,0 +1,86 @@
+name: EC2 Instance Management
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Action to perform'
+        required: true
+        default: 'launch'
+        type: choice
+        options:
+          - launch
+          - terminate
+          - list
+      instance_type:
+        description: 'EC2 instance type (for launch action)'
+        required: false
+        default: 't2.medium'
+      region:
+        description: 'AWS region'
+        required: false
+        default: 'us-east-1'
+      instance_id:
+        description: 'EC2 instance ID (for terminate action)'
+        required: false
+
+jobs:
+  manage-ec2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ github.event.inputs.region || 'us-east-1' }}
+      
+      - name: Launch EC2 instance
+        if: github.event.inputs.action == 'launch'
+        run: |
+          INSTANCE_ID=$(aws ec2 run-instances \
+            --image-id ami-0c55b159cbfafe1f0 \
+            --instance-type ${{ github.event.inputs.instance_type }} \
+            --key-name manus-ec2-key \
+            --security-group-ids sg-manus-ec2 \
+            --user-data file://infrastructure/bootstrap.sh \
+            --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=manus-browser-automation}]' \
+            --query 'Instances[0].InstanceId' \
+            --output text)
+          
+          echo "Launched instance: $INSTANCE_ID"
+          echo "INSTANCE_ID=$INSTANCE_ID" >> $GITHUB_ENV
+          
+          # Wait for instance to be running
+          aws ec2 wait instance-running --instance-ids $INSTANCE_ID
+          
+          # Get public IP and DNS
+          PUBLIC_IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
+          PUBLIC_DNS=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query 'Reservations[0].Instances[0].PublicDnsName' --output text)
+          
+          echo "Instance is running:"
+          echo "Instance ID: $INSTANCE_ID"
+          echo "Public IP: $PUBLIC_IP"
+          echo "Public DNS: $PUBLIC_DNS"
+      
+      - name: Terminate EC2 instance
+        if: github.event.inputs.action == 'terminate'
+        run: |
+          aws ec2 terminate-instances --instance-ids ${{ github.event.inputs.instance_id }}
+          echo "Terminating instance: ${{ github.event.inputs.instance_id }}"
+          
+          # Wait for instance to be terminated
+          aws ec2 wait instance-terminated --instance-ids ${{ github.event.inputs.instance_id }}
+          
+          echo "Instance ${{ github.event.inputs.instance_id }} has been terminated"
+      
+      - name: List EC2 instances
+        if: github.event.inputs.action == 'list'
+        run: |
+          echo "Listing all manus-browser-automation instances:"
+          aws ec2 describe-instances \
+            --filters "Name=tag:Name,Values=manus-browser-automation" \
+            --query "Reservations[*].Instances[*].{ID:InstanceId,Type:InstanceType,State:State.Name,IP:PublicIpAddress,DNS:PublicDnsName}" \
+            --output table

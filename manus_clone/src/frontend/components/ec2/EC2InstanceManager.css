@@ -1,0 +1,162 @@
+.ec2-instance-manager {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.instance-manager-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.instance-manager-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.launch-options {
+  background-color: #f8f9fa;
+  border-radius: var(--border-radius);
+  padding: 15px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+}
+
+.instances-list {
+  overflow-x: auto;
+}
+
+.instances-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.instances-table th,
+.instances-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.instances-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.active-instance {
+  background-color: rgba(74, 108, 247, 0.05);
+}
+
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.status-indicator:before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.status-running {
+  background-color: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+}
+
+.status-running:before {
+  background-color: #28a745;
+}
+
+.status-provisioning {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: #ffc107;
+}
+
+.status-provisioning:before {
+  background-color: #ffc107;
+}
+
+.status-stopping, .status-terminated {
+  background-color: rgba(108, 117, 125, 0.1);
+  color: #6c757d;
+}
+
+.status-stopping:before, .status-terminated:before {
+  background-color: #6c757d;
+}
+
+.status-error {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+}
+
+.status-error:before {
+  background-color: #dc3545;
+}
+
+.instance-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-sm {
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-sm.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.btn-sm.btn-primary:hover:not(:disabled) {
+  background-color: #3a5bd9;
+}
+
+.btn-sm.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-sm.btn-danger {
+  background-color: var(--danger-color);
+  color: white;
+  border-color: var(--danger-color);
+}
+
+.btn-sm.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.no-instances {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--secondary-color);
+}
+
+.no-instances p {
+  margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+  .launch-options {
+    grid-template-columns: 1fr;
+  }
+}

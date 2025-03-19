@@ -1,0 +1,112 @@
+.settings-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.settings-header {
+  margin-bottom: 30px;
+}
+
+.settings-header h1 {
+  margin-bottom: 5px;
+  font-size: 2rem;
+}
+
+.settings-header p {
+  color: var(--secondary-color);
+  margin-top: 0;
+}
+
+.settings-content {
+  display: flex;
+  gap: 30px;
+}
+
+.settings-sidebar {
+  flex: 0 0 250px;
+}
+
+.settings-main {
+  flex: 1;
+}
+
+.settings-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+.settings-nav li {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.settings-nav li:last-child {
+  border-bottom: none;
+}
+
+.settings-nav a {
+  display: block;
+  padding: 15px 20px;
+  color: var(--dark-color);
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.settings-nav a:hover {
+  background-color: #f8f9fa;
+  text-decoration: none;
+}
+
+.settings-nav li.active a {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.settings-section {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+.settings-section h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.settings-section form {
+  max-width: 600px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.settings-note {
+  margin-top: 15px;
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .settings-content {
+    flex-direction: column;
+  }
+  
+  .settings-sidebar {
+    flex: auto;
+    margin-bottom: 20px;
+  }
+}

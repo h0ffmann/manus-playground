@@ -1,0 +1,36 @@
+.login-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.login-form-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-subtitle {
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+}
+
+.login-button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.login-footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.login-footer p {
+  margin: 5px 0;
+}

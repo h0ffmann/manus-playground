@@ -1,0 +1,167 @@
+# Justfile for Manus EC2 Browser Automation Project
+# This file contains all available commands for development, testing, and deployment
+
+# Default recipe to display help
+default:
+    @just --list
+
+# Install all dependencies
+install:
+    npm install
+    cd frontend && npm install
+    cd backend && npm install
+
+# Start the development environment
+dev: dev-frontend dev-backend
+
+# Start the frontend development server
+dev-frontend:
+    cd frontend && npm run dev
+
+# Start the backend development server
+dev-backend:
+    cd backend && npm run dev
+
+# Build the project
+build: build-frontend build-backend
+
+# Build the frontend
+build-frontend:
+    cd frontend && npm run build
+
+# Build the backend
+build-backend:
+    cd backend && npm run build
+
+# Run tests
+test: test-frontend test-backend
+
+# Run frontend tests
+test-frontend:
+    cd frontend && npm test
+
+# Run backend tests
+test-backend:
+    cd backend && npm test
+
+# Lint the code
+lint: lint-frontend lint-backend
+
+# Lint frontend code
+lint-frontend:
+    cd frontend && npm run lint
+
+# Lint backend code
+lint-backend:
+    cd backend && npm run lint
+
+# Format the code
+format: format-frontend format-backend
+
+# Format frontend code
+format-frontend:
+    cd frontend && npm run format
+
+# Format backend code
+format-backend:
+    cd backend && npm run format
+
+# Clean the project
+clean:
+    rm -rf node_modules
+    rm -rf frontend/node_modules frontend/dist
+    rm -rf backend/node_modules backend/dist
+
+# Deploy the application to AWS
+deploy: build
+    aws cloudformation deploy --template-file infrastructure/cloudformation-template.json --stack-name manus-ec2-browser --capabilities CAPABILITY_IAM
+
+# Launch a new EC2 instance
+launch-ec2 instance_type="t2.medium" region="us-east-1":
+    aws ec2 run-instances --image-id ami-0c55b159cbfafe1f0 --instance-type {{instance_type}} --key-name manus-ec2-key --security-group-ids sg-manus-ec2 --user-data file://infrastructure/bootstrap.sh --region {{region}} --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=manus-browser-automation}]'
+
+# Terminate an EC2 instance
+terminate-ec2 instance_id:
+    aws ec2 terminate-instances --instance-ids {{instance_id}}
+
+# List all running EC2 instances
+list-ec2:
+    aws ec2 describe-instances --filters "Name=tag:Name,Values=manus-browser-automation" "Name=instance-state-name,Values=running" --query "Reservations[*].Instances[*].{ID:InstanceId,Type:InstanceType,State:State.Name,IP:PublicIpAddress,DNS:PublicDnsName}" --output table
+
+# Create a new release
+release version:
+    @echo "Creating release v{{version}}"
+    git tag v{{version}}
+    git push origin v{{version}}
+
+# Setup AWS credentials
+setup-aws:
+    @echo "Setting up AWS credentials"
+    aws configure
+
+# Generate documentation
+docs:
+    cd docs && npm run build
+
+# Start the application in production mode
+start: build
+    cd backend && npm run start:prod
+
+# Stop the application
+stop:
+    pkill -f "node backend/dist/main.js" || true
+
+# Restart the application
+restart: stop start
+
+# Create a backup of the database
+backup:
+    @echo "Creating database backup"
+    mkdir -p backups
+    date=$(date +%Y-%m-%d-%H-%M-%S) && \
+    mongodump --out=backups/backup-$date
+
+# Restore a database backup
+restore backup_dir:
+    @echo "Restoring database from {{backup_dir}}"
+    mongorestore {{backup_dir}}
+
+# Setup the project from scratch
+setup: install build
+    @echo "Project setup complete"
+
+# Update dependencies
+update:
+    npm update
+    cd frontend && npm update
+    cd backend && npm update
+
+# Check for security vulnerabilities
+security:
+    npm audit
+    cd frontend && npm audit
+    cd backend && npm audit
+
+# Run the application in a Docker container
+docker-run: build
+    docker-compose up -d
+
+# Stop Docker containers
+docker-stop:
+    docker-compose down
+
+# Build Docker images
+docker-build:
+    docker-compose build
+
+# Deploy to production
+deploy-prod: build
+    @echo "Deploying to production"
+    # Add your production deployment commands here
+    # Example: aws s3 sync frontend/dist s3://your-bucket-name/
+
+# Deploy to staging
+deploy-staging: build
+    @echo "Deploying to staging"
+    # Add your staging deployment commands here
+    # Example: aws s3 sync frontend/dist s3://your-staging-bucket-name/

@@ -1,0 +1,138 @@
+.browser-controls {
+  background-color: white;
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+
+.browser-controls-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.url-bar-container {
+  margin-bottom: 10px;
+}
+
+.url-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.url-bar-button {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--dark-color);
+  transition: background-color 0.2s;
+}
+
+.url-bar-button:hover:not(:disabled) {
+  background-color: var(--light-color);
+}
+
+.url-bar-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.back-button, .refresh-button {
+  border-right: 1px solid var(--border-color);
+}
+
+.go-button {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.go-button:hover:not(:disabled) {
+  background-color: #3a5bd9;
+}
+
+.url-input {
+  flex: 1;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.browser-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--secondary-color);
+}
+
+.loading-indicator {
+  display: flex;
+  align-items: center;
+}
+
+.loading-indicator:before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+.instance-info {
+  display: flex;
+  align-items: center;
+}
+
+.instance-status {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.status-running {
+  background-color: var(--success-color);
+}
+
+.status-provisioning {
+  background-color: var(--warning-color);
+}
+
+.status-stopping, .status-terminated {
+  background-color: var(--secondary-color);
+}
+
+.status-error {
+  background-color: var(--danger-color);
+}
+
+.instance-id, .instance-region {
+  margin-right: 15px;
+}
+
+.no-instance {
+  color: var(--danger-color);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

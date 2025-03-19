@@ -1,0 +1,129 @@
+.browser-display {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.browser-content {
+  padding: 20px;
+}
+
+.browser-screenshot {
+  position: relative;
+  margin-bottom: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.browser-screenshot img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.browser-elements-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.browser-element {
+  position: absolute;
+  background-color: rgba(74, 108, 247, 0.1);
+  border: 1px solid rgba(74, 108, 247, 0.3);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.browser-element:hover {
+  background-color: rgba(74, 108, 247, 0.2);
+  border-color: rgba(74, 108, 247, 0.5);
+}
+
+.browser-html-content {
+  margin-top: 20px;
+}
+
+.browser-html-content h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: var(--secondary-color);
+}
+
+.content-preview {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: var(--border-radius);
+  font-family: monospace;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.browser-actions {
+  display: flex;
+  gap: 10px;
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  border-top: 1px solid var(--border-color);
+}
+
+.browser-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.browser-placeholder h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--dark-color);
+}
+
+.browser-placeholder p {
+  margin-bottom: 20px;
+  color: var(--secondary-color);
+}
+
+.browser-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(74, 108, 247, 0.2);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+.browser-display.no-instance .browser-placeholder {
+  color: var(--secondary-color);
+}
+
+.browser-display.empty .browser-placeholder {
+  color: var(--secondary-color);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

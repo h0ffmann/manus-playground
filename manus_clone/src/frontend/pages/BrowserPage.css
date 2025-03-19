@@ -1,0 +1,49 @@
+.browser-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.browser-page-header {
+  margin-bottom: 20px;
+}
+
+.browser-page-header h1 {
+  margin-bottom: 5px;
+  font-size: 2rem;
+}
+
+.browser-page-header p {
+  color: var(--secondary-color);
+  margin-top: 0;
+}
+
+.browser-page-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.browser-section {
+  margin-bottom: 20px;
+}
+
+.ec2-section {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 992px) {
+  .browser-page-content {
+    flex-direction: row;
+    gap: 20px;
+  }
+  
+  .browser-section {
+    flex: 2;
+    margin-bottom: 0;
+  }
+  
+  .ec2-section {
+    flex: 1;
+    margin-bottom: 0;
+  }
+}
